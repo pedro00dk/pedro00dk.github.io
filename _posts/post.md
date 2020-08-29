@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "POST TITLE"
-date: YYYY-MM-DD hh:mm:ss -0000
+date: 2020-08-29 16:51:00 -0000
 categories: CATEGORY-1 CATEGORY-2
 ---
 
