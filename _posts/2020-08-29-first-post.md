@@ -114,11 +114,10 @@ Front matter can be used to set variables to be used to set variables that can b
 food: Pizza
 ---
 
-# {{ page.food }}
+# \{{ page.food }}
 ```
 
-Variables such as `title`, `date`, `categories` are also available, but only if the are manualy set, their default values (when not manually defined are not available.)
-
+Variables such as `title` and `categories` are also available, but only if the are manualy set in the front matter, their default values (when not manually defined are not available). `layout` (except `layout`, it always shows, probably because it is globaly defined), 
 This way to access variables is just the beginning of all the things that are possible with Liquid, a templating engine that we can use in the markdown files.
 
 ### Liquid, Variables and Includes
@@ -126,6 +125,8 @@ This way to access variables is just the beginning of all the things that are po
 title: {{ title }}
 
 page title: {{ page.title }}
+
+page permalink: {{ page.permalink }}
 
 layout: {{ layout }}
 
