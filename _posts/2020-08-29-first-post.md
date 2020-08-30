@@ -1,6 +1,5 @@
 ---
-layout: post
-title: Configuring Github pages (jekyll)
+date: 2020-08-28 00:00:00 -0300
 categories: CATEGORY-1 CATEGORY-2
 tags: tag1 tag2
 ---
@@ -70,19 +69,32 @@ I also saw that front matter is optional, and the default options were already w
 -   `title`: this options sets the text of the browser tab.
     If not provided, jekyll tries to infer it from the markdown contents.
     Title is presented in the jekyll documentation as an front matter option, but I found no documentation explaining what happens when it is not defined.
-    After some testing, I found that Jekyll sets the title automatically based on the markdown content.
+    After some testing, I found that Jekyll sets the title auomatically based on the markdown content.
     Ignoring the front matter, if the first non empty line is a `h1` header (it does not matter if it is set with `#` or `=`), it is used as title.
     The title is then appended by the site name, like: `<title> | <username>.github.io`   
-    If the first empty line after the front matter is not a `h1` header, it uses the format: `<username>.github.io | <repository->`.
-    The `more-stuff` depends on the theme (or at least I believe so), but with the theme I chose, it showed the repository description.
+    If the first empty line after the front matter is not a `h1` header, it uses the format: `<username>.github.io | <repository-description>`.
     Although, when I changed the description, it did not update the title.
     I recommend using this option only when the title is too long.
 -   `permalink`: Permalink is the path you use to access the rendered file (e.g. if `permalink: /us/about/` then you can access the file through `<username>.github.io/us/about/`).
     If `permalink` is not provided, jekyll will use the directory structure and file name to set the path, e.g. if there is a file in `/me/about`, you can acess it through `<username>.github.io/about` or `<username>.github.io/about.html`, the path `<username>.github.io/about/` with an `/` in the end will not work, except if you set it in the permalink.
 
-### Creating posts (almost the same as pages)
+### Creating posts
 
+Posts are very similar to pages, but they provide some extra features that are usefull for blogging, such as publish date, categories and tags.
+Posts must be created inside the `/_posts` folder and the file name must have the format `YYYY-MM-DD-<file-name>.md`.
 
+Github pages documentation presents again a front marker with missing triple dashes.
+The fixed version is bellow:
+```
+---
+layout: page
+title: "POST TITLE"
+date: YYYY-MM-DD hh:mm:ss -0000
+categories: CATEGORY-1 CATEGORY-2
+---
+```
+
+The `layout` and `title` options work the same way as page options, So I removed both.
 
 ### Front matter
 
