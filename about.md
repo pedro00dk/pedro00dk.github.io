@@ -1,5 +1,4 @@
 ---
-layout: post
 permalink: /about
 categories: CATEGORY-1 CATEGORY-2
 ---
