@@ -21,7 +21,24 @@ title: {{ title }}
 page title: {{ page.title }}
 
 layout: {{ layout }}
-layout: {{ page.layout }}
+
+page layout: {{ page.layout }}
+
+date: {{ date }}
+
+page date: {{ page.date }}
+
+category: {{ category }}
+
+categories: {{ categories }}
+
+page category: {{ page.category }}
+
+page categories: {{ page.categories }}
+
+tags: {{ tags }}
+
+page tags: {{ page.tags }}
 
 
-You can contact me mainly through may email address: pedro00dk@gmail.com
+You can contact me mainly through my email address: pedro00dk@gmail.com
