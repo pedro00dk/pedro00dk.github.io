@@ -8,10 +8,10 @@ tags: tag1 tag2
 # Creating and configuring Github pages (jekyll)
 
 Github Pages is an extremely useful feature for the creation of simple websites and blogs without having to code anyting.
-Although it is simple to get started by just writing some markdown in a `README.md`, things became a bit complicated because speciall features I wanted to use, and hidden behaviors I faced.
+Although it is simple to get started by just writing some markdown in a `README.md`, things became a bit complicated because of speciall features I wanted to use, and hidden behaviors I faced.
 
-> This is my first post in may own page, and it reports my experiences when creating this website.
-> Things written here may not correct and are certainly not to be taken as definition or specification of anything.
+> This is my first post in my own page, and it reports my experiences when creating this website.
+> Things written here may not correct and are certainly not to be taken as definition or specification of anything, but it may help you if you have similar problems.
 
 ### Resources
 
@@ -26,7 +26,9 @@ This is fairly straightforward, we just have to access repository *Settings* men
 There we can choose the repository branch and directory of the sources to be used for creating the website static files.
 
 Since this specific repository is dedicated to my website, and I was willing to use Github's own features, I just chose the main branch and root directory as source for the website.
+I also chose one of the themes avaliable in the *Theme Chooser* section, this automatically commited a new file called `_config.yml` and set the `theme` option according to the theme I chose.
 This is all I had to do to start, at this point I was already able to access the website at https://pedro00dk.github.io, and it showed the `README.md` file I had created previously.
+**My idea was to create this website with the minimal amount of configuration possible, so I always tried using default behaviors and avoid setting options.**
 
 It was cool, but I did not want to show the contents of the `README.md` in the website, but just use it to put information about the repository itself, and that was my first problem.
 The Github Pages documentation is does not say anywhere how to change the default requested file when we access the website root, and if you just want to create a simple single page website and still have a separate `README.md` file, you will have problems.
@@ -54,8 +56,38 @@ So, the github documentation should have something like:
 ---
 layout: page
 title: "PAGE TITLE"
-permalink: /URL-PATH/ # eg: /about of /about.html
+permalink: /URL-PATH/
 ---
 ```
-
 Finally things started working again.
+
+I also saw that front matter is optional, and the default options were already what I wanted.
+-   `layout`: this option defines the html that will be used to wrap the rendered markdown.
+    In the Github Pages documentation, the value used is `page`, which I did not found any documentation on Github Pages or jekyll.
+    The `layout: page` also had a side effect, the theme I chose when configuring Github Pages was not working anymore.
+    This happened because the `page` value overrides the layouts set by the `theme` option in `_config.yml`.
+    I just removed this option from the front matter and the themming started working again, this is the same as setting `layout: default` (only if you do not override `defaults` in your `_config.yml`).
+-   `title`: this options sets the text of the browser tab.
+    If not provided, jekyll tries to infer it from the markdown contents.
+    Title is presented in the jekyll documentation as an front matter option, but I found no documentation explaining what happens when it is not defined.
+    After some testing, I found that Jekyll sets the title automatically based on the markdown content.
+    Ignoring the front matter, if the first non empty line is a `h1` header (it does not matter if it is set with `#` or `=`), it is used as title.
+    The title is then appended by the site name, like: `<title> | <username>.github.io`   
+    If the first empty line after the front matter is not a `h1` header, it uses the format: `<username>.github.io | <repository->`.
+    The `more-stuff` depends on the theme (or at least I believe so), but with the theme I chose, it showed the repository description.
+    Although, when I changed the description, it did not update the title.
+    I recommend using this option only when the title is too long.
+-   `permalink`: Permalink is the path you use to access the rendered file (e.g. if `permalink: /us/about/` then you can access the file through `<username>.github.io/us/about/`).
+    If `permalink` is not provided, jekyll will use the directory structure and file name to set the path, e.g. if there is a file in `/me/about`, you can acess it through `<username>.github.io/about` or `<username>.github.io/about.html`, the path `<username>.github.io/about/` with an `/` in the end will not work, except if you set it in the permalink.
+
+### Creating posts (almost the same as pages)
+
+
+
+### Front matter
+
+Although I avoid setting options in the front matter, some things have to be said for educational purposes.
+The front matter can be used to create cu
+
+### Liquid, Variables and Includes
+
