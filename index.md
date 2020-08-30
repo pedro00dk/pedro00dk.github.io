@@ -1,5 +1,6 @@
 # Index
 
+<!--
 Testing jekyll variables:
 
 ### site:
@@ -94,6 +95,8 @@ Testing jekyll variables:
 
 ### content:
 {{ content }}
+
+-->
 
 ### Posts:
 {% for post in site.posts %}
