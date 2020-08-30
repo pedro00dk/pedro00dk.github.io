@@ -17,7 +17,11 @@ By default, the options are:
 # About
 
 title: {{ title }}
+
 page title: {{ page.title }}
+
+layout: {{ layout }}
+layout: {{ page.layout }}
 
 
 You can contact me mainly through may email address: pedro00dk@gmail.com
