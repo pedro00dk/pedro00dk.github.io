@@ -73,8 +73,7 @@ I also saw that front matter is optional, and the default options were already w
     Ignoring the front matter, if the first non empty line is a `h1` header (it does not matter if it is set with `#` or `=`), it is used as title.
     The title is then appended by the site name, like: `<title> | <username>.github.io`   
     If the first empty line after the front matter is not a `h1` header, it uses the format: `<username>.github.io | <repository-description>`.
-    Although, when I changed the description, it did not update the title.
-    I recommend using this option only when the title is too long.
+    I recommend using this option only when the title is too long or for posts (more on that below).
 -   `permalink`: Permalink is the path you use to access the rendered file (e.g. if `permalink: /us/about/` then you can access the file through `<username>.github.io/us/about/`).
     If `permalink` is not provided, jekyll will use the directory structure and file name to set the path, e.g. if there is a file in `/me/about`, you can acess it through `<username>.github.io/about` or `<username>.github.io/about.html`, the path `<username>.github.io/about/` with an `/` in the end will not work, except if you set it in the permalink.
 
