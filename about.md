@@ -1,11 +1,12 @@
-first
-line
-<!--
 ---
-layout: page
-title: "PAGE TITLE"
+layout: post
 permalink: /about
 ---
+
+first
+line
+
+<!--
 
 The line above a are "optional configurations for jekyll".
 By default, the options are:
