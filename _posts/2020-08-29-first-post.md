@@ -104,7 +104,7 @@ The other options are:
 -   `tags`: List of tags of a post.
 
 The difference between `categories` and `tags` is minimal, they both can be used to iterate through posts (more on that in the following sections), but category is also used to set the default post link. 
-Default links for posts are not based on they directory, the default path is a concatenation of all post categories and the post date (`/<CAT-1>/<CAT-2>/.../<CAT-N>/YYYY/MM/DD/<title>(.html)?`). `permalink` is not in the template, but it works the same way as in pages, overriding the default path.
+Default links for posts are not based on the directory (`/_post`), the default path is a concatenation of all post categories and the post date (`/<CAT-1>/<CAT-2>/.../<CAT-N>/YYYY/MM/DD/<title>(.html)?`). `permalink` is not in the template, but it works the same way as in pages, overriding the default path.
 
 Posts also have one more special front matter variable, which is `published`.
 If `published` is set to `false`,  it will remove the post from the list containing all posts (more on that latter).
@@ -121,7 +121,7 @@ food: Pizza
 
 # {&nbsp;{ page.food }}
 
-Note: do not copy the line above, there is an &nbsp character between the braces to avoid pre-processing
+Note: do not copy the line above, there is n &nbsp character between the braces to avoid pre-processing
 ```
 
 The `layout` variable is alwyays available, `date` is always avialable for posts only.
@@ -138,3 +138,5 @@ Some examples:
 
 ### Liquid
 
+Before proceding to the next steps of the blog construction, I had to take alook at Liquid.
+Liquid is a template language for creating web apps, jekyll uses it, so it is available by default on Github Pages.
