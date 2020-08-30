@@ -1,9 +1,9 @@
 ---
-categories: CATEGORY-1 CATEGORY-2
-tags: tag1 tag2
+title: Creating and configuring Github pages
+categories: notes github-pages
 ---
 
-# Creating and configuring Github pages (jekyll)
+# Creating and configuring Github pages
 
 Github Pages is an extremely useful feature for the creation of simple websites and blogs without having to code anyting.
 Although it is simple to get started by just writing some markdown in a `README.md`, things became a bit complicated because of speciall features I wanted to use, and hidden behaviors I faced.
@@ -16,6 +16,7 @@ Although it is simple to get started by just writing some markdown in a `README.
 First, resources I used to create my page to check to use Github Pages properly:
 -   Github Pages documentation: https://docs.github.com/en/github/working-with-github-pages
 -   jekyll documentation: https://jekyllrb.com/docs/
+-   Liquid documentation: https://shopify.github.io/liquid/
 
 ### Setting up the repository and website
 
@@ -95,6 +96,7 @@ categories: CATEGORY-1 CATEGORY-2
 
 The `layout` option work the same way as page option, so I removed it.
 The `title` option works a little differently, if this option is not provided, jekyll uses the `<file-name>` (without the date part) as title rather than infering from the markdown content.
+Because of that, I prefered to use `title` only in post files.
 
 The other options are:
 -   `date`: It is used to override the date set in the file name.
@@ -105,7 +107,11 @@ The other options are:
 The difference between `categories` and `tags` is minimal, they both can be used to iterate through posts (more on that in the following sections), but category is also used to set the default post link. 
 Default links for posts are not based on they directory, the default path is a concatenation of all post categories and the post date (`/<CAT-1>/<CAT-2>/.../<CAT-N>/YYYY/MM/DD/<title>(.html)?`). `permalink` is not in the template, but it works the same way as in pages, overriding the default path.
 
-### Front matter
+Posts also have one more special front matter variable, which is `published`.
+If `published` is set to `false`,  it will remove the post from the list containing all posts (more on that latter).
+Another important thing is that if the date of the post is in the future, it will also not be available, although this can be changed by setting `future: true` in `_config.yaml`.
+
+### Front matter and Variables
 
 Although I avoid setting options in the front matter, some things have to be said for educational purposes.
 Front matter can be used to set variables to be used to set variables that can be used in the markdown by using double braces:
@@ -114,38 +120,22 @@ Front matter can be used to set variables to be used to set variables that can b
 food: Pizza
 ---
 
-# \{{ page.food }}
+# {&nbsp;{ page.food }}
+
+Note: do not copy the line above, there is an &nbsp character between the braces to avoid pre-processing
 ```
 
-Variables such as `title` and `categories` are also available, but only if the are manualy set in the front matter, their default values (when not manually defined are not available). `layout` (except `layout`, it always shows, probably because it is globaly defined), 
-This way to access variables is just the beginning of all the things that are possible with Liquid, a templating engine that we can use in the markdown files.
+The `layout` variable is alwyays available, `date` is always avialable for posts only.
+Other variables, such as `title`, `categories`, `tags` and `published` are available only if manually set.
+Some have different names, for instance, the `permalink` can be access through `url`.
 
-### Liquid, Variables and Includes
+Besides these variables, there are also may others containing all sorts of things.
+Some are available globally and for the entire site, and others are different for each page.
+A list with there variables can be accessd at: https://jekyllrb.com/docs/variables/
 
-title: {{ title }}
+Some examples:
+-   title: {{ page.title }}
+-   url (permalink): {{ page.url }}
 
-page title: {{ page.title }}
-
-page permalink: {{ page.permalink }}
-
-layout: {{ layout }}
-
-page layout: {{ page.layout }}
-
-date: {{ date }}
-
-page date: {{ page.date }}
-
-category: {{ category }}
-
-categories: {{ categories }}
-
-page category: {{ page.category }}
-
-page categories: {{ page.categories }}
-
-tags: {{ tags }}
-
-page tags: {{ page.tags }}
-
+### Liquid
 
