@@ -1,5 +1,4 @@
 ---
-date: 2020-08-28 00:00:00 -0300
 categories: CATEGORY-1 CATEGORY-2
 tags: tag1 tag2
 ---
@@ -94,12 +93,58 @@ categories: CATEGORY-1 CATEGORY-2
 ---
 ```
 
-The `layout` and `title` options work the same way as page options, So I removed both.
+The `layout` option work the same way as page option, so I removed it.
+The `title` option works a little differently, if this option is not provided, jekyll uses the `<file-name>` (without the date part) as title rather than infering from the markdown content.
+
+The other options are:
+-   `date`: It is used to override the date set in the file name.
+    It is possible to also add the time and timezone.
+-   `category` or `categories`: List of categories of a post.
+-   `tags`: List of tags of a post.
+
+The difference between `categories` and `tags` is minimal, they both can be used to iterate through posts (more on that in the following sections), but category is also used to set the default post link. 
+Default links for posts are not based on they directory, the default path is a concatenation of all post categories and the post date (`/<CAT-1>/<CAT-2>/.../<CAT-N>/YYYY/MM/DD/<title>(.html)?`). `permalink` is not in the template, but it works the same way as in pages, overriding the default path.
 
 ### Front matter
 
 Although I avoid setting options in the front matter, some things have to be said for educational purposes.
-The front matter can be used to create cu
+Front matter can be used to set variables to be used to set variables that can be used in the markdown by using double braces:
+```
+---
+food: Pizza
+---
+
+# {{ page.food }}
+```
+
+Variables such as `title`, `date`, `categories` are also available, but only if the are manualy set, their default values (when not manually defined are not available.)
+
+This way to access variables is just the beginning of all the things that are possible with Liquid, a templating engine that we can use in the markdown files.
 
 ### Liquid, Variables and Includes
+
+title: {{ title }}
+
+page title: {{ page.title }}
+
+layout: {{ layout }}
+
+page layout: {{ page.layout }}
+
+date: {{ date }}
+
+page date: {{ page.date }}
+
+category: {{ category }}
+
+categories: {{ categories }}
+
+page category: {{ page.category }}
+
+page categories: {{ page.categories }}
+
+tags: {{ tags }}
+
+page tags: {{ page.tags }}
+
 
