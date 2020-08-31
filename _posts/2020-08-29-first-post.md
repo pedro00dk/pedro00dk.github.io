@@ -14,9 +14,9 @@ Although it is simple to get started by just writing some markdown in a `README.
 ### Resources
 
 First, resources I used to create my page to check to use Github Pages properly:
--   Github Pages documentation: https://docs.github.com/en/github/working-with-github-pages
--   jekyll documentation: https://jekyllrb.com/docs/
--   Liquid documentation: https://shopify.github.io/liquid/
+-   Github Pages documentation: <https://docs.github.com/en/github/working-with-github-pages>
+-   jekyll documentation: <https://jekyllrb.com/docs/>
+-   Liquid documentation: <https://shopify.github.io/liquid/>
 
 ### Setting up the repository and website
 
@@ -26,7 +26,7 @@ There we can choose the repository branch and directory of the sources to be use
 
 Since this specific repository is dedicated to my website, and I was willing to use Github's own features, I just chose the main branch and root directory as source for the website.
 I also chose one of the themes avaliable in the *Theme Chooser* section, this automatically commited a new file called `/_config.yml` and set the `theme` option according to the theme I chose.
-This is all I had to do to start, at this point I was already able to access the website at https://pedro00dk.github.io, and it showed the `README.md` file I had created previously.
+This is all I had to do to start, at this point I was already able to access the website at <https://pedro00dk.github.io>, and it showed the `README.md` file I had created previously.
 
 > My idea was to create this website with the minimal amount of configuration possible, so I always tried using default behaviors and avoid setting options.
 > I also avoided having to clone the repository and testing things localy, everything was done in the browser.
@@ -79,7 +79,8 @@ I also saw that front matter is optional, and the default options were already w
     If the first empty line after the front matter is not a `h1` header, it uses the format: `<username>.github.io | <repository-description>`.
     I recommend using this option only when the title is too long or for posts (more on that below).
 -   `permalink`: Permalink is the path you use to access the rendered file (e.g. if `permalink: /us/about/` then you can access the file through `<username>.github.io/us/about/`).
-    If `permalink` is not provided, jekyll will use the directory structure and file name to set the path, e.g. if there is a file in `/me/about`, you can acess it through `<username>.github.io/about` or `<username>.github.io/about.html`, the path `<username>.github.io/about/` with an `/` in the end will not work, except if you set it in the permalink.
+    If `permalink` is not provided, jekyll will use the directory structure and file name to set the path, e.g. if there is a file in `/me/about`, you can acess it through `<username>.github.io/about` or `<username>.github.io/about.html`.
+    The path `<username>.github.io/about/` with an `/` in the end will not work, except if it is set in the permalink.
 
 ### Creating posts
 
@@ -108,7 +109,7 @@ The other options are:
 -   `tags`: List of tags of a post.
 
 The difference between `categories` and `tags` is minimal, they both can be used to iterate through posts (more on that in the following sections), but category is also used to set the default post link. 
-Default links for posts are not based on the directory (`/_post/`), the default path is a concatenation of all post categories and the post date (`/<CAT-1>/<CAT-2>/.../<CAT-N>/YYYY/MM/DD/<title>(.html)?`). `permalink` is not in the template, but it works the same way as in pages, overriding the default path.
+Default links for posts are not based on the directory (`/_post/`), the default path is a concatenation of all post categories and the post date (`/<CAT-1>/<CAT-2>/.../<CAT-N>/YYYY/MM/DD/<title>`). `permalink` is not in the template, but it works the same way as in pages, overriding the default path.
 
 Posts also have one more special front matter variable, which is `published`.
 If `published` is set to `false`,  it will remove the post from the list containing all posts (more on that latter).
