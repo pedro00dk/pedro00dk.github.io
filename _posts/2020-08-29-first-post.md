@@ -8,7 +8,7 @@ categories: projects notes github-pages
 Github Pages is an extremely useful feature for the creation of simple websites and blogs without having to code anyting.
 Although it is simple to get started by just writing some markdown in a `README.md`, things became a bit complicated because of special features I wanted to use, and hidden behaviors I faced.
 
-> This is my first post in my own page, and it reports my experiences when creating this website.
+> This post relates my own experience when creating this website.
 > Things written here may not be correct and are certainly not to be taken as definition or specification of anything, but it may be helpful if you face similar problems.
 
 ### Resources
