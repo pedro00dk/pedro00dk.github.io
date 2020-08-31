@@ -7,4 +7,8 @@
 
 ---
 
-Last update: {{ site.time }}
+Last update: {{ site.time | date '%d %B %Y - %H:%M' }}
+
+Last update: {{ site.time | date '%d %B %Y - %H:%M' }}
+
+Last update: {{ 'now' | date '%d %B %Y - %H:%M' }}
