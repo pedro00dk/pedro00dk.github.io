@@ -1,15 +1,15 @@
 ---
-title: Creating and configuring Github pages
-categories: notes github-pages
+title: Creating and configuring Github pages (under construction)
+categories: projects notes github-pages
 ---
 
 # Creating and configuring Github pages
 
 Github Pages is an extremely useful feature for the creation of simple websites and blogs without having to code anyting.
-Although it is simple to get started by just writing some markdown in a `README.md`, things became a bit complicated because of speciall features I wanted to use, and hidden behaviors I faced.
+Although it is simple to get started by just writing some markdown in a `README.md`, things became a bit complicated because of special features I wanted to use, and hidden behaviors I faced.
 
 > This is my first post in my own page, and it reports my experiences when creating this website.
-> Things written here may not correct and are certainly not to be taken as definition or specification of anything, but it may help you if you have similar problems.
+> Things written here may not be correct and are certainly not to be taken as definition or specification of anything, but it may be helpful if you face similar problems.
 
 ### Resources
 
@@ -25,9 +25,11 @@ This is fairly straightforward, we just have to access repository *Settings* men
 There we can choose the repository branch and directory of the sources to be used for creating the website static files.
 
 Since this specific repository is dedicated to my website, and I was willing to use Github's own features, I just chose the main branch and root directory as source for the website.
-I also chose one of the themes avaliable in the *Theme Chooser* section, this automatically commited a new file called `_config.yml` and set the `theme` option according to the theme I chose.
+I also chose one of the themes avaliable in the *Theme Chooser* section, this automatically commited a new file called `/_config.yml` and set the `theme` option according to the theme I chose.
 This is all I had to do to start, at this point I was already able to access the website at https://pedro00dk.github.io, and it showed the `README.md` file I had created previously.
-**My idea was to create this website with the minimal amount of configuration possible, so I always tried using default behaviors and avoid setting options.**
+
+> My idea was to create this website with the minimal amount of configuration possible, so I always tried using default behaviors and avoid setting options.
+> I also avoided having to clone the repository and testing things localy, everything was done in the browser.
 
 It was cool, but I did not want to show the contents of the `README.md` in the website, but just use it to put information about the repository itself, and that was my first problem.
 The Github Pages documentation is does not say anywhere how to change the default requested file when we access the website root, and if you just want to create a simple single page website and still have a separate `README.md` file, you will have problems.
@@ -64,6 +66,8 @@ I also saw that front matter is optional, and the default options were already w
 -   `layout`: this option defines the html that will be used to wrap the rendered markdown.
     In the Github Pages documentation, the value used is `page`, which I did not found any documentation on Github Pages or jekyll.
     The `layout: page` also had a side effect, the theme I chose when configuring Github Pages was not working anymore.
+    After looking at the Jekyll documentation and source code of the themes offered by github, I found that most themes implement a `default` layout, and a couple also implement a `post` layout.
+    These layouts are located inside the `/_layout/` directory
     This happened because the `page` value overrides the layouts set by the `theme` option in `_config.yml`.
     I just removed this option from the front matter and the themming started working again, this is the same as setting `layout: default` (only if you do not override `defaults` in your `_config.yml`).
 -   `title`: this options sets the text of the browser tab.
@@ -80,7 +84,7 @@ I also saw that front matter is optional, and the default options were already w
 ### Creating posts
 
 Posts are very similar to pages, but they provide some extra features that are usefull for blogging, such as publish date, categories and tags.
-Posts must be created inside the `/_posts` folder and the file name must have the format `YYYY-MM-DD-<file-name>.md`.
+Posts must be created inside the `/_posts/` folder and the file name must have the format `YYYY-MM-DD-<file-name>.md`.
 
 Github pages documentation presents again a front marker with missing triple dashes.
 The fixed version is bellow:
@@ -95,7 +99,7 @@ categories: CATEGORY-1 CATEGORY-2
 
 The `layout` option work the same way as page option, so I removed it.
 The `title` option works a little differently, if this option is not provided, jekyll uses the `<file-name>` (without the date part) as title rather than infering from the markdown content.
-Because of that, I prefered to use `title` only in post files.
+Because of that, I prefered to use `title` only for post files.
 
 The other options are:
 -   `date`: It is used to override the date set in the file name.
@@ -104,7 +108,7 @@ The other options are:
 -   `tags`: List of tags of a post.
 
 The difference between `categories` and `tags` is minimal, they both can be used to iterate through posts (more on that in the following sections), but category is also used to set the default post link. 
-Default links for posts are not based on the directory (`/_post`), the default path is a concatenation of all post categories and the post date (`/<CAT-1>/<CAT-2>/.../<CAT-N>/YYYY/MM/DD/<title>(.html)?`). `permalink` is not in the template, but it works the same way as in pages, overriding the default path.
+Default links for posts are not based on the directory (`/_post/`), the default path is a concatenation of all post categories and the post date (`/<CAT-1>/<CAT-2>/.../<CAT-N>/YYYY/MM/DD/<title>(.html)?`). `permalink` is not in the template, but it works the same way as in pages, overriding the default path.
 
 Posts also have one more special front matter variable, which is `published`.
 If `published` is set to `false`,  it will remove the post from the list containing all posts (more on that latter).
@@ -135,6 +139,10 @@ A list with there variables can be accessd at: https://jekyllrb.com/docs/variabl
 Some examples:
 -   title: {{ page.title }}
 -   url (permalink): {{ page.url }}
+
+### Displaying a List of Posts
+
+The pages and posts I created were not accessible from the main page because jekyll does not create any kind of references among pages.
 
 ### Liquid
 
