@@ -257,4 +257,9 @@ With Github Pages, Jekyll and Liquid, I was able to create my own page easily, u
 Still, all technologies I used were new for me, and it took some time to understand how they all work together.
 But from this point, developing and adding content to the site was much easier.
 
-Of course, there are many more features available in this platform that I did not use, but may help you to create your page te way you want.
+If you are willing to create a simple site to showcase your projects, Github Pages is the way to go.
+It is very simple to get started in the platform and it allows you to write your page incrementally.
+
+---
+
+Thanks for reading!
