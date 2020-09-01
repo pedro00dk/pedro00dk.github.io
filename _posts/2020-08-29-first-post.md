@@ -120,6 +120,7 @@ Another important thing is that if the date of the post is in the future, it wil
 Front matter can be used to set variables to be used to set variables that can be used in the markdown by using double braces.
 The front matter content is YAML, and therefore can be used to create all sorts of objects of different types.
 All variables declared in the front matter are contained in an object called `page`.
+{% raw %}
 ```markdown
 ---
 food: pizza
@@ -131,12 +132,11 @@ phones:
     - 202-555-0148
 ---
 
-{% raw %}
 food: {{ page.food }}
 address: {{ page.address.street }} - {{ page.address.number }}
 phones: {{ page.phones[0] }}, {{ page.phones[1] }}
-{% endraw %}
 ```
+{% endraw %}
 
 ### Displaying a List of Posts
 
@@ -146,6 +146,7 @@ My intention was initially to add the list of posts in the main page, I would ta
 Jekyll collects all pages, posts and information, and saves in several variables that can be used inside the pages. For instance, the variable `site.pages` contains a list of all pages, and `site.posts` contains a reverse chronological list of all posts.
 Each element in the `site.posts` array contained several properties about the post, such as its name, url, categories and so on.
 The jekyll documentation shows a bood example on how to iterate through an array of posts without using the brackets syntax:
+{% raw %}
 ```html
 <ul>
   {% for post in site.posts %}
@@ -155,6 +156,7 @@ The jekyll documentation shows a bood example on how to iterate through an array
   {% endfor %}
 </ul>
 ```
+{% endraw %}
 The `post` object is the same `page` object for each specific post, so It contains all the information about each post.
 This solution worked fine, but now I stated having other problems with formatting.
 In my posts index I wanted to add the categories and date of each post.
@@ -162,14 +164,14 @@ In my posts index I wanted to add the categories and date of each post.
 Categories of the post can be accessd through `post.categories`, and because it is also an array, I could use the same for syntax to print it.
 The date was also accessible through `post.date`, although date is a string and can be easily rendered, it used an ISO format, which was hard to read.
 At this point I had something like:
-```markdown
 {% raw %}
+```markdown
 {% for post in site.posts %}
 -   [{{ post.title }}]({{ post.url }}) - {{ post.date }}  
         - <small>{% for cat in post.categories %}{{ post.categories }}, {% endfor %}</small>
 {% endfor %}
-{% endraw %}
 ```
+{% endraw %}
 
 Both the rendering of categories and the date looked weird, the code to render categories looked convoluted for such simple task and I had to format the date somehow in the markdown.
 
