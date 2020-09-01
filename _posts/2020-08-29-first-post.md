@@ -24,7 +24,7 @@ First, resources I used to create my page:
 
 ### Setting up the repository and website
 
-After creating a user page repository (which must have the name `\<username\>.github.io`), the first thing I had to do was to enable Github Pages rendering.
+After creating a user page repository (which must have the name `<username>.github.io`), the first thing I had to do was to enable Github Pages rendering.
 This is fairly straightforward, I just had to access the repository Settings menu and to to the GitHub Pages section.
 There I could choose the repository branch and directory of the sources to be used for creating the website static files.
 
