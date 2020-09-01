@@ -43,10 +43,10 @@ langs_tools:
       image: https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/docker/docker.png
       exp: high
     - name: gcp
-      image: https://icon2.cleanpng.com/20180503/eoe/kisspng-google-cloud-platform-internet-of-things-cloud-com-google-plus-5aeb20daab7612.0669413915253588107023.jpg
+      image: https://seeklogo.com/images/G/google-cloud-logo-ADE788217F-seeklogo.com.png
       exp: high
     - name: firebase
-      image: https://icon2.cleanpng.com/20180609/ryh/kisspng-firebase-cloud-messaging-google-cloud-messaging-api-as-a-service-5b1bf782ac0ca2.2103995315285594907047.jpg
+      image: https://i1.wp.com/www.point-star.com/wp-content/uploads/2018/11/firebase.png
       exp: high
     - name: react
       image: https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png
