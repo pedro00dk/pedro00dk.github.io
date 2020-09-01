@@ -39,20 +39,23 @@ languages:
 
 ##### Highly experienced:
 
+<div>
 {% for language in page.languages %}
     {% if language.exp == 'high' %}
 <img src="{{ language.image }}" alt="{{ language.name }}" style="display: inline-block; width: 50px; padding-right: 10px;" />
     {% endif %}
 {% endfor %}
-</br>
+</div>
 
 ##### Less experienced:
 
+<div>
 {% for language in page.languages %}
     {% if language.exp == 'low' %}
-[<img src="{{ language.image }}" alt="{{ language.name }}" style="width: 50px; padding-right: 10px;" />][#]
+<img src="{{ language.image }}" alt="{{ language.name }}" style="width: 50px; padding-right: 10px;" />
     {% endif %}
 {% endfor %}
+<div>
 
 ### Posts
 
