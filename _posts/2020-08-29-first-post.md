@@ -173,7 +173,7 @@ At this point I had something like:
 ```
 {% endraw %}
 
-Both the rendering of categories and the date looked weird, the code to render categories looked convoluted for such simple task and I had to format the date somehow in the markdown.
+Both the rendering of categories and the date looked weird, the code to render categories was convoluted for such simple task and I had to format the date somehow in the markdown.
 
 ### Liquid
 
