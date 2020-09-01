@@ -17,19 +17,19 @@ Although it is simple to get started by just writing some markdown in a `README.
 
 ### Resources
 
-First, resources I used to create my page to check to use Github Pages properly:
+First, resources I used to create my page:
 -   Github Pages documentation: <https://docs.github.com/en/github/working-with-github-pages>
 -   Jekyll documentation: <https://jekyllrb.com/docs/>
 -   Liquid documentation: <https://shopify.github.io/liquid/>
 
 ### Setting up the repository and website
 
-After creating a Github Pages repository (which must have the name <username>.github.io), the first thing we have to do is enable page rendering.
-This is fairly straightforward, we just have to access repository *Settings* menu and to to the *GitHub Pages* section.
-There we can choose the repository branch and directory of the sources to be used for creating the website static files.
+After creating a user page repository (which must have the name `\<username\>.github.io`), the first thing I had to do was to enable Github Pages rendering.
+This is fairly straightforward, I just had to access the repository Settings menu and to to the GitHub Pages section.
+There I could choose the repository branch and directory of the sources to be used for creating the website static files.
 
 Since this specific repository is dedicated to my website, and I was willing to use Github's own features, I just chose the main branch and root directory as source for the website.
-I also chose one of the themes available in the *Theme Chooser* section, this automatically committed a new file called `/_config.yml` and set the `theme` option according to the theme I chose.
+I also chose one of the themes available in the Theme Chooser section, this automatically committed a new file called `/_config.yml` and set the `theme` option according to the theme I chose.
 This is all I had to do to start, at this point I was already able to access the website at <https://pedro00dk.github.io>, and it showed the `README.md` file I had created previously.
 
 > My idea was to create this website with the minimal amount of configuration possible, so I always tried using default behaviors and avoid setting options.
@@ -126,7 +126,7 @@ Posts also have one more special front matter variable, which is `published`.
 If `published` is set to `false`,  it will remove the post from the array containing all posts (more on that latter).
 Another important thing is that if the date of the post is in the future, it will also not be available, although this can be changed by setting `future: true` in `_config.yaml`.
 
-### Front matter and Variables
+### Front matter and variables
 
 Front matter can be used to set variables for the page or post.
 These variables can be accessed in the markdown by using double braces.
@@ -152,7 +152,7 @@ phones: {{ page.phones[0] }}, {{ page.phones[1] }}
 ```
 {% endraw %}
 
-### Displaying a List of Posts
+### Displaying a list of posts
 
 The pages and posts I created were not accessible from the main page because Jekyll does not create any kind of references among pages.
 My intention was initially to add the array of posts in the main page, I would take care of pagination after writing more posts.
