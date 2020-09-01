@@ -117,7 +117,9 @@ Another important thing is that if the date of the post is in the future, it wil
 
 ### Front matter and Variables
 
-Front matter can be used to set variables to be used to set variables that can be used in the markdown by using double braces.
+Front matter can be used to set variables for the page or post.
+These variables can be accessed in the markdown by using double braces.
+As I talked about before, some of the variables have special meanings, they will be used by jekyll to configure the page.
 The front matter content is YAML, and therefore can be used to create all sorts of objects of different types.
 All variables declared in the front matter are contained in an object called `page`.
 {% raw %}
@@ -177,11 +179,12 @@ Both the rendering of categories and the date looked weird, the code to render c
 
 ### Liquid
 
-At this point I still did not understant what Liquid really is.
+At this point I still did not understant what Liquid really is, but I saw some examples along the jekyll documentation and knew it could be used to process the content of variables declared in the front matter or injected by jekyll.
+Before proceding to the next steps of the blog construction, I had to take alook at Liquid documentation.
 
 I AM HERE
 
-Before proceding to the next steps of the blog construction, I had to take alook at Liquid.
+
 Liquid is a template language for creating web apps, jekyll uses it, so it is available by default on Github Pages.
 
 ##### Control flow
