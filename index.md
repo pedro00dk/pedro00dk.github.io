@@ -41,15 +41,16 @@ languages:
 
 {% for language in page.languages %}
     {% if language.exp == 'high' %}
-<img align="left" alt="{{ language.name }}" width="35px" src="{{ language.image }}" />
+<img src="{{ language.image }}" alt="{{ language.name }}" style="width: 50px; padding-right: 10px;" />
     {% endif %}
 {% endfor %}
+</br>
 
 ##### Less experienced:
 
 {% for language in page.languages %}
     {% if language.exp == 'low' %}
-<img align="left" alt="{{ language.name }}" width="25px" src="{{ language.image }}" />
+[<img src="{{ language.image }}" alt="{{ language.name }}" style="width: 50px; padding-right: 10px;" />][]
     {% endif %}
 {% endfor %}
 
