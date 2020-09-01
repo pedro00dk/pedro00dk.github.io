@@ -41,7 +41,7 @@ Although this solution is fairly simple, it is not clear how to do it, I firstly
 
 Creating new pages was realy simple, I just had to create a new file and paste some markdown and add some stuff in the begginning of the file called **front matter**.
 This is the example Github Pages presents:
-```
+```markdown
 layout: page
 title: "PAGE TITLE"
 permalink: /URL-PATH/
@@ -53,7 +53,7 @@ I had to search the jekyll documentation again.
 The **front matter** is not part of the markdown specification, but different libraries use it (different formats of exist) to get metadata from files.
 Jekyll's front matter is a small list of options in YAML on top of the markdown file (I believe this works with hml), **which set between triple-dashed lines**.
 So, the github documentation should have something like:
-```
+```markdown
 ---
 layout: page
 title: "PAGE TITLE"
@@ -89,7 +89,7 @@ Posts must be created inside the `/_posts/` folder and the file name must have t
 
 Github pages documentation presents again a front marker with missing triple dashes.
 The fixed version is bellow:
-```
+```markdown
 ---
 layout: page
 title: "POST TITLE"
@@ -117,35 +117,81 @@ Another important thing is that if the date of the post is in the future, it wil
 
 ### Front matter and Variables
 
-Although I avoid setting options in the front matter, some things have to be said for educational purposes.
-Front matter can be used to set variables to be used to set variables that can be used in the markdown by using double braces:
-```
+Front matter can be used to set variables to be used to set variables that can be used in the markdown by using double braces.
+The front matter content is YAML, and therefore can be used to create all sorts of objects of different types.
+All variables declared in the front matter are contained in an object called `page`.
+```markdown
 ---
-food: Pizza
+food: pizza
+address:
+    street: ordinary street
+    number: 57
+phones:
+    - 202-555-0143
+    - 202-555-0148
 ---
 
-# {&nbsp;{ page.food }}
-
-Note: do not copy the line above, there is n &nbsp character between the braces to avoid pre-processing
+{% raw %}
+food: {{ page.food }}
+address: {{ page.address.street }} - {{ page.address.number }}
+phones: {{ page.phones[0] }}, {{ page.phones[1] }}
+{% endraw %}
 ```
-
-The `layout` variable is alwyays available, `date` is always avialable for posts only.
-Other variables, such as `title`, `categories`, `tags` and `published` are available only if manually set.
-Some have different names, for instance, the `permalink` can be access through `url`.
-
-Besides these variables, there are also may others containing all sorts of things.
-Some are available globally and for the entire site, and others are different for each page.
-A list with there variables can be accessd at: https://jekyllrb.com/docs/variables/
-
-Some examples:
--   title: {{ page.title }}
--   url (permalink): {{ page.url }}
 
 ### Displaying a List of Posts
 
 The pages and posts I created were not accessible from the main page because jekyll does not create any kind of references among pages.
+My intention was initially to add the list of posts in the main page, I would take care of paginaiton after writting more posts.
+
+Jekyll collects all pages, posts and information, and saves in several variables that can be used inside the pages. For instance, the variable `site.pages` contains a list of all pages, and `site.posts` contains a reverse chronological list of all posts.
+Each element in the `site.posts` array contained several properties about the post, such as its name, url, categories and so on.
+The jekyll documentation shows a bood example on how to iterate through an array of posts without using the brackets syntax:
+```html
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+```
+The `post` object is the same `page` object for each specific post, so It contains all the information about each post.
+This solution worked fine, but now I stated having other problems with formatting.
+In my posts index I wanted to add the categories and date of each post.
+
+Categories of the post can be accessd through `post.categories`, and because it is also an array, I could use the same for syntax to print it.
+The date was also accessible through `post.date`, although date is a string and can be easily rendered, it used an ISO format, which was hard to read.
+At this point I had something like:
+```markdown
+{% raw %}
+{% for post in site.posts %}
+-   [{{ post.title }}]({{ post.url }}) - {{ post.date }}  
+        - <small>{% for cat in post.categories %}{{ post.categories }}, {% endfor %}</small>
+{% endfor %}
+{% endraw %}
+```
+
+Both the rendering of categories and the date looked weird, the code to render categories looked convoluted for such simple task and I had to format the date somehow in the markdown.
 
 ### Liquid
 
+At this point I still did not understant what Liquid really is.
+
+I AM HERE
+
 Before proceding to the next steps of the blog construction, I had to take alook at Liquid.
 Liquid is a template language for creating web apps, jekyll uses it, so it is available by default on Github Pages.
+
+##### Control flow
+
+##### Control flow
+
+##### Going back to variables
+
+I already have used variables a few times, such as `layout`, `page.title`, `site.posts`, but it took me longer to understand how these variables were organized.
+Some are available globally and for the entire site, and others are different for each page.
+A list with there variables can be accessd at: <https://jekyllrb.com/docs/variables/>
+
+All of these variables are not part of Liquid, the are injected by jekyll (including the front matter)
+
+##### Variable types
