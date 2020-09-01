@@ -1,9 +1,13 @@
 ---
-title: Creating and configuring Github Pages (under construction)
+title: Creating and configuring Github Pages
 categories: projects notes github-pages
 ---
 
 # Creating and configuring Github Pages
+
+---
+#### This post is about one of my projects: <https://github.com/pedro00dk/pedro00dk.github.io>
+---
 
 Github Pages is an extremely useful feature for the creation of simple websites and blogs without having to code anything.
 Although it is simple to get started by just writing some markdown in a `README.md`, things became a bit complicated because of special features I wanted to use, and hidden behaviors I faced.
