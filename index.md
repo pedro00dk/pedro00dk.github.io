@@ -56,6 +56,11 @@ langs_tools:
       exp: high
 ---
 
+### About
+
+[Click here](/about.html) to see my personal info and contact information.
+
+
 ### Languages and Tools
 
 ##### Highly experienced:
@@ -84,6 +89,12 @@ langs_tools:
 -   [{{ post.title }}]({{ post.url }}) - {{ post.date | date: '%d %B %Y' }}  
         - <small>**{{ post.categories | join ', ' }}**</small>
 {% endfor %}
+
+
+
+### Testing stuff
+
+[jekyll html layout](/layout_test.html).
 
 ---
 
