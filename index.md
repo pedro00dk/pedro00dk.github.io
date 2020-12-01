@@ -92,8 +92,20 @@ langs_tools:
 
 ### Personal Projects
 
+<ul id='personal-projects' />
 
-
+<script>
+    const personalProjects = document.getElementById('personal-projects')
+    const appendRepository = (repositoryData) => {
+        const { name, description, descriptionHTML, homepageUrl, url, createdAt, diskUsage, forkCount, updatedAt} = repositoryData
+        const container$ = document.createElement('li')
+        container$.innerHTML = `
+            ::marker
+            <a href="${url}">${name}</a>
+        `
+        personalProjects.append(container$)
+    }
+</script>
 
 ### Testing stuff
 
@@ -103,14 +115,11 @@ langs_tools:
 
 
 
+
 <script>
     const token = 'a4e9803f09b78240041f5d60b162a3468901a23b' // public token without any authorization
     const api = 'https://api.github.com/graphql'
-    const headers = {
-        'X-Requested-With': 'XMLHttpRequest',
-        'Content-Type': 'application/json',
-        Authorization: `bearer ${token}`,
-    }
+    const headers = { 'X-Requested-With': 'XMLHttpRequest', 'Content-Type': 'application/json', Authorization: `bearer ${token}` }
     const query = `
     query {
   viewer {
@@ -141,9 +150,15 @@ langs_tools:
       totalDiskUsage
     }
   }
-}
-    fetch(api, { method: 'POST', headers, body: JSON.stringfy({query }) }).then(response => response.json()).then(json => console.log(json))
-    `
+}`
+  
+    fetch(api, { method: 'POST', headers, body: JSON.stringify({query }) })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+            json.data.repositories.forEach(repo => appendRepository(repo.node))
+        })
+  
 
     console.log('hello from markdown file!!!')
 </script>
