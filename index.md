@@ -100,9 +100,14 @@ langs_tools:
         const { name, description, descriptionHTML, homepageUrl, url, createdAt, diskUsage, forkCount, updatedAt, openGraphImageUrl } = repositoryData
         const container$ = document.createElement('li')
         container$.innerHTML = `
-            <img src="${openGraphImageUrl}" width="64px" height="64px"/>
-            <a href="${url}">${name}</a> - ${description}
-            - <small></small>
+            <div style="display: flex">
+                <div style="display: flex; flex-direction: column">
+                    <a href="${url}">${name}</a> - ${description}
+                    <br/>
+                    -    <small>test</small>
+                </div>
+                <img src="${openGraphImageUrl}" width="64px" height="64px" />
+            </div>
         `
         personalProjects.append(container$)
     }
@@ -118,7 +123,7 @@ langs_tools:
 
 
 <script>
-    const token = 'a4e9803f09b78240041f5d60b162a3468901a23b' // public token without any authorization
+    const token = 'cd4cc02ff82dc72738b005ffcdf0f639717d2d29' // public token without any authorization
     const api = 'https://api.github.com/graphql'
     const headers = { 'X-Requested-With': 'XMLHttpRequest', 'Content-Type': 'application/json', Authorization: `bearer ${token}` }
     const query = `
