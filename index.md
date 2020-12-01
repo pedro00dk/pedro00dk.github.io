@@ -90,11 +90,18 @@ langs_tools:
         - <small>**{{ post.categories | join ', ' }}**</small>
 {% endfor %}
 
+### Personal Projects
+
+
 
 
 ### Testing stuff
 
 [jekyll html layout](/layout_test.html).
+
+<script>
+    console.log('hello from markdown file!!!')
+</script>
 
 ---
 
