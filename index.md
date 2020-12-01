@@ -142,7 +142,7 @@ langs_tools:
     }
   }
 }
-    fetch(api, { method: 'POST', headers, signal, body: JSON.stringfy({query }) }).then(response => response.json()).then(json => console.log(json))
+    fetch(api, { method: 'POST', headers, body: JSON.stringfy({query }) }).then(response => response.json()).then(json => console.log(json))
     `
 
     console.log('hello from markdown file!!!')
