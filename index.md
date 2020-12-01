@@ -156,7 +156,7 @@ langs_tools:
         .then(response => response.json())
         .then(json => {
             console.log(json)
-            json.data.viewer.repositories.nodes.forEach(repo => appendRepository(repo.node))
+            json.data.viewer.repositories.nodes.forEach(repo => appendRepository(repo))
         })
   
 
