@@ -99,9 +99,58 @@ langs_tools:
 
 [jekyll html layout](/layout_test.html).
 
+
+
+
+
 <script>
+    const token = 'a4e9803f09b78240041f5d60b162a3468901a23b' // public token without any authorization
+    const api = 'https://api.github.com/graphql'
+    const headers = {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${token}`,
+    }
+    const query = `
+    query {
+  viewer {
+    login
+    anyPinnableItems
+    bio
+    pinnedItems(first: 10) {
+      nodes {
+        ... on Repository {
+          id
+          name
+        }
+      }
+    }
+    repositories(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
+      nodes {
+        name
+        createdAt
+        description
+        descriptionHTML
+        diskUsage
+        forkCount
+        homepageUrl
+        url
+        updatedAt
+      }
+      totalCount
+      totalDiskUsage
+    }
+  }
+}
+    fetch(api, { method: 'POST', headers, signal, body: JSON.stringfy({query }) }).then(response => response.json()).then(json => console.log(json))
+    `
+
     console.log('hello from markdown file!!!')
 </script>
+
+
+
+
 
 ---
 
