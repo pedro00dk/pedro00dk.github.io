@@ -97,11 +97,12 @@ langs_tools:
 <script>
     const personalProjects = document.getElementById('personal-projects')
     const appendRepository = (repositoryData) => {
-        const { name, description, descriptionHTML, homepageUrl, url, createdAt, diskUsage, forkCount, updatedAt} = repositoryData
+        const { name, description, descriptionHTML, homepageUrl, url, createdAt, diskUsage, forkCount, updatedAt, openGraphImageUrl } = repositoryData
         const container$ = document.createElement('li')
         container$.innerHTML = `
-            ::marker
-            <a href="${url}">${name}</a>
+            <img src="${openGraphImageUrl}" width="64px" height="64px"/>
+            <a href="${url}">${name}</a> - ${description}
+            - <small></small>
         `
         personalProjects.append(container$)
     }
@@ -145,12 +146,27 @@ langs_tools:
         homepageUrl
         url
         updatedAt
+        languages(first: 100) {
+          nodes {
+            color
+            id
+            name
+          }
+        }
+        primaryLanguage {
+          color
+          id
+          name
+        }
+        openGraphImageUrl
+        nameWithOwner
       }
       totalCount
       totalDiskUsage
     }
   }
-}`
+}
+`
   
     fetch(api, { method: 'POST', headers, body: JSON.stringify({query }) })
         .then(response => response.json())
