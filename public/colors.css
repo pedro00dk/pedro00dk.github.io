@@ -1,28 +1,27 @@
 :root {
-    /* foundation */
     --color-hue: 200;
     --color-sat: 100%;
     --color-light: 50%;
     /* light theme */
-    --color-primary-light: hsl(var(--color-hue) var(--color-sat) var(--color-light));
-    --color-text1-light: hsl(var(--color-hue) var(--color-sat) 10%);
+    --color-primary-light: hsl(var(--color-hue), var(--color-sat), var(--color-light));
+    --color-text1-light: hsl(var(--color-hue), var(--color-sat), 10%);
     --color-text2-light: hsl(var(--color-hue) 30% 30%);
-    --color-surface1-light: hsl(var(--color-hue) 25% 90%);
-    --color-surface2-light: hsl(var(--color-hue) 20% 99%);
-    --color-surface3-light: hsl(var(--color-hue) 20% 92%);
-    --color-surface4-light: hsl(var(--color-hue) 20% 85%);
-    --color-surface-shadow-light: var(--color-hue) 10% 20%;
-    --color-shadow-strength-light: 0.02;
+    --color-surface1-light: hsl(var(--color-hue), 25%, 90%);
+    --color-surface2-light: hsl(var(--color-hue), 20%, 99%);
+    --color-surface3-light: hsl(var(--color-hue), 20%, 92%);
+    --color-surface4-light: hsl(var(--color-hue), 20%, 85%);
+    --color-shadow-light: var(--color-hue), 10%, 20%;
+    --color-skeleton-light: var(--color-hue), 0%, 0%;
     /* dark theme */
-    --color-primary-dark: hsl(var(--color-hue) calc(var(--color-sat) / 2) calc(var(--color-light) / 1.5));
-    --color-text1-dark: hsl(var(--color-hue) 15% 85%);
-    --color-text2-dark: hsl(var(--color-hue) 5% 65%);
-    --color-surface1-dark: hsl(var(--color-hue) 10% 10%);
-    --color-surface2-dark: hsl(var(--color-hue) 10% 15%);
-    --color-surface3-dark: hsl(var(--color-hue) 5% 20%);
-    --color-surface4-dark: hsl(var(--color-hue) 5% 25%);
-    --color-surface-shadow-dark: var(--color-hue) 50% 3%;
-    --color-shadow-strength-dark: 0.8;
+    --color-primary-dark: hsl(var(--color-hue), calc(var(--color-sat) / 2), calc(var(--color-light) / 1.5));
+    --color-text1-dark: hsl(var(--color-hue), 15%, 85%);
+    --color-text2-dark: hsl(var(--color-hue), 5%, 65%);
+    --color-surface1-dark: hsl(var(--color-hue), 10%, 10%);
+    --color-surface2-dark: hsl(var(--color-hue), 10%, 15%);
+    --color-surface3-dark: hsl(var(--color-hue), 5%, 20%);
+    --color-surface4-dark: hsl(var(--color-hue), 5%, 25%);
+    --color-shadow-dark: var(--color-hue), 50%, 3%;
+    --color-skeleton-dark: var(--color-hue), 0%, 100%;
 }
 
 @media (prefers-color-scheme: no-preference), (prefers-color-scheme: light) {
@@ -35,8 +34,8 @@
         --color-surface2: var(--color-surface2-light);
         --color-surface3: var(--color-surface3-light);
         --color-surface4: var(--color-surface4-light);
-        --color-surface-shadow: var(--color-surface-shadow-light);
-        --color-shadow-strength: var(--color-shadow-strength-light);
+        --color-shadow: var(--color-shadow-light);
+        --color-skeleton: var(--color-skeleton-light);
     }
 }
 
@@ -50,8 +49,8 @@
         --color-surface2: var(--color-surface2-dark);
         --color-surface3: var(--color-surface3-dark);
         --color-surface4: var(--color-surface4-dark);
-        --color-surface-shadow: var(--color-surface-shadow-dark);
-        --color-shadow-strength: var(--color-shadow-strength-dark);
+        --color-shadow: var(--color-shadow-dark);
+        --color-skeleton: var(--color-skeleton-dark);
     }
 }
 
@@ -64,8 +63,8 @@
     --color-surface2: var(--color-surface2-light);
     --color-surface3: var(--color-surface3-light);
     --color-surface4: var(--color-surface4-light);
-    --color-surface-shadow: var(--color-surface-shadow-light);
-    --color-shadow-strength: var(--color-shadow-strength-light);
+    --color-shadow: var(--color-shadow-light);
+    --color-skeleton: var(--color-skeleton-light);
 }
 
 :root[color-scheme='dark'] {
@@ -77,6 +76,6 @@
     --color-surface2: var(--color-surface2-dark);
     --color-surface3: var(--color-surface3-dark);
     --color-surface4: var(--color-surface4-dark);
-    --color-surface-shadow: var(--color-surface-shadow-dark);
-    --color-shadow-strength: var(--color-shadow-strength-dark);
+    --color-shadow: var(--color-shadow-dark);
+    --color-skeleton: var(--color-skeleton-dark);
 }

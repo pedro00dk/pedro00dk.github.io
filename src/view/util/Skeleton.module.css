@@ -1,0 +1,55 @@
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.root {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    color: hsla(var(--color-skeleton), 0.12);
+    background: currentColor;
+    &.text {
+        border-radius: 4px;
+        transform: scale(1, 0.6);
+        transform-origin: 60%;
+    }
+    &.rect {
+    }
+    &.circle {
+        border-radius: 50%;
+        aspect-ratio: 1;
+    }
+    &::after {
+        content: '\00a0';
+        position: absolute;
+        inset: 0;
+    }
+    &.pulse::after {
+        background: currentColor;
+        animation: pulse 2s linear 0.5s infinite;
+    }
+    &.wave::after {
+        background: linear-gradient(90deg, transparent, currentColor, transparent);
+        animation: wave 2s linear 0.5s infinite;
+    }
+}
