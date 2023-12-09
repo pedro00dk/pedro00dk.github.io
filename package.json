@@ -1,0 +1,23 @@
+{
+    "name": "pedro00dk.github.io",
+    "version": "0.0.0",
+    "type": "module",
+    "devDependencies": {
+        "solid-devtools": "0.29.2",
+        "typescript": "5.3.3",
+        "vite": "5.0.7",
+        "vite-plugin-solid": "2.8.0"
+    },
+    "dependencies": {
+        "@solidjs/router": "0.10.1",
+        "solid-js": "1.8.7"
+    },
+    "overrides": {
+        "vite": "5.0.7"
+    },
+    "scripts": {
+        "start": "vite",
+        "build": "vite build",
+        "serve": "vite preview"
+    }
+}
