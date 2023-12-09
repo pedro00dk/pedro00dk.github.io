@@ -49,7 +49,7 @@ const fetchRepositories = async () => {
     let repos: Repository[] = JSON.parse(localStorage.getItem('github-repos') ?? '[]')
     if (expire > Date.now()) return setGithub$({ repos })
     setGithub$({ fetching: true })
-    const response = await fetch('https://api.github.com/users/pedro00dk/repos', { method: 'get' })
+    const response = await fetch('https://api.github.com/users/pedro00dk/repos?per_page=100', { method: 'get' })
     repos = await response.json()
     localStorage.setItem('github-repos-expire', `${Date.now() + 86400000}`)
     localStorage.setItem('github-repos', JSON.stringify(repos))
