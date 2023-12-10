@@ -6,7 +6,6 @@ import { appRouter } from './App'
 
 export const indexRouter = () =>
     ({
-        path: '/',
         load: indexLoader,
         component: Index,
         children: [appRouter()],
