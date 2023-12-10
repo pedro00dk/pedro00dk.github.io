@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "type": "module",
     "devDependencies": {
+        "dprint": "0.43.2",
         "solid-devtools": "0.29.2",
         "typescript": "5.3.3",
         "vite": "5.0.7",
@@ -16,6 +17,8 @@
         "vite": "5.0.7"
     },
     "scripts": {
+        "format:check": "dprint check",
+        "format:write": "dprint fmt",
         "start": "vite",
         "build": "vite build",
         "serve": "vite preview"

@@ -1,0 +1,15 @@
+{
+    "plugins": [
+        "https://plugins.dprint.dev/typescript-0.88.7.wasm",
+        "https://plugins.dprint.dev/json-0.19.1.wasm"
+    ],
+    "excludes": ["**/node_modules", "**/*-lock.json"],
+    "incremental": false,
+    "indentWidth": 4,
+    "lineWidth": 120,
+    "newLineKind": "lf",
+    "typescript": {
+        "semiColons": "asi",
+        "quoteStyle": "alwaysSingle"
+    }
+}

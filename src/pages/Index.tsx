@@ -1,4 +1,4 @@
-import { RouteDefinition, RouteSectionProps, Router } from '@solidjs/router'
+import { RouteDefinition, Router, RouteSectionProps } from '@solidjs/router'
 import { createResource } from 'solid-js'
 import { render } from 'solid-js/web'
 import { github$Actions } from '../stores/github'
@@ -9,7 +9,7 @@ export const indexRouter = () =>
         load: indexLoader,
         component: Index,
         children: [appRouter()],
-    } as RouteDefinition)
+    }) as RouteDefinition
 
 export const indexLoader = () => ({ index: { repositories: createResource(github$Actions.fetchRepositories) } })
 
