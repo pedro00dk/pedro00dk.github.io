@@ -1,3 +1,4 @@
+import { cache } from '@solidjs/router'
 import { createStore } from 'solid-js/store'
 
 export type Owner = {
@@ -10,7 +11,7 @@ export type Owner = {
     repos_url: string
 }
 
-export type Repository = {
+export type Repo = {
     owner: Owner
     name: string
     full_name: string
@@ -37,23 +38,23 @@ export type Repository = {
 }
 
 export type Store = {
-    fetching?: boolean
-    fetchingError?: Error
-    repos?: Repository[]
+    repos?: Repo[]
+    groups?: { [group: string]: Repo[] }
 }
 
 export const [github$, setGithub$] = createStore<Store>({})
 
-const fetchRepositories = async () => {
-    let expire = +(localStorage.getItem('github-repos-expire') ?? '0')
-    let repos: Repository[] = JSON.parse(localStorage.getItem('github-repos') ?? '[]')
-    if (expire > Date.now()) return setGithub$({ repos })
-    setGithub$({ fetching: true })
-    const response = await fetch('https://api.github.com/users/pedro00dk/repos?per_page=100', { method: 'get' })
-    repos = await response.json()
+const fetchRepos = cache(async () => {
+    const expire = +(localStorage.getItem('github-repos-expire') ?? '0')
+    const repos: Repo[] =
+        expire < Date.now()
+            ? JSON.parse(localStorage.getItem('github-repos') ?? '[]')
+            : await (await fetch('https://api.github.com/users/pedro00dk/repos?per_page=100')).json()
     localStorage.setItem('github-repos-expire', `${Date.now() + 86400000}`)
     localStorage.setItem('github-repos', JSON.stringify(repos))
-    setGithub$({ fetching: false, repos })
-}
+    const groups: Store['groups'] = {}
+    repos.forEach(repo => repo.topics.forEach(topic => topic.startsWith('gio-') && (groups[topic] ??= []).push(repo)))
+    setGithub$({ repos, groups })
+}, 'repos')
 
-export const github$Actions = { fetchRepositories }
+export const githubActions = { fetchRepos }
