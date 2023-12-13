@@ -1,5 +1,6 @@
 import { RouteDefinition, createAsync } from '@solidjs/router'
 import { For, Suspense } from 'solid-js'
+import { Icon } from '../components/Icon'
 import { Repo, github$, githubActions } from '../stores/github'
 import { repoRouter } from './Repository'
 
@@ -14,7 +15,6 @@ export const App = () => {
             <h1>pedro00dk.github.io</h1>
             <Suspense fallback='loading...'>
                 {void waits.map(wait => wait())}
-                <Repositories repos={github$.repos ?? []} />
                 <For each={Object.entries(github$.groups ?? {})}>
                     {([group, repos]) => (
                         <>
@@ -23,24 +23,22 @@ export const App = () => {
                         </>
                     )}
                 </For>
+                <h2>Other</h2>
+                <Repositories repos={github$.repos ?? []} />
             </Suspense>
         </article>
     )
 }
 
 const Repositories = (props: { repos: Repo[] }) => {
-    return (
-        <ul>
-            <For each={props.repos}>{repo => <Repository {...repo} />}</For>
-        </ul>
-    )
+    return <ul>{<For each={props.repos}>{repo => <li>{<Repository {...repo} />}</li>}</For>}</ul>
 }
 
 const Repository = (props: Repo) => (
     <section>
         <header>
             <h2>{<a href={`/repos/${props.name}`}>{props.name}</a>}</h2>
-            <div>{props.language}</div>
+            {props.language && <Icon name={props.language} style={{ 'inline-size': '32px' }} />}
         </header>
         <p>{props.description}</p>
     </section>
