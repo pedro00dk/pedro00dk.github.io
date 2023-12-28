@@ -38,6 +38,7 @@ export type Repo = {
 }
 
 export type Store = {
+    owner?: Owner
     repos?: Repo[]
     groups?: ReturnType<typeof getGroups>
 }
@@ -52,7 +53,7 @@ const fetchRepos = cache(async () => {
             : await (await fetch('https://api.github.com/users/pedro00dk/repos?per_page=100')).json()
     localStorage.setItem('github-repos-expire', `${Date.now() + 86400000}`)
     localStorage.setItem('github-repos', JSON.stringify(repos))
-    setGithub$({ repos, groups: getGroups(repos) })
+    setGithub$({ owner: repos.at(0)?.owner, repos, groups: getGroups(repos) })
 }, 'repos')
 
 const getGroups = (repos: Repo[]) => {
