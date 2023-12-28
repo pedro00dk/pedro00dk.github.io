@@ -15,8 +15,8 @@ export const App = () => {
             <h1>pedro00dk.github.io</h1>
             <Suspense fallback='loading...'>
                 {void waits.map(wait => wait())}
-                <For each={Object.entries(github$.groups ?? {})}>
-                    {([group, repos]) => (
+                <For each={github$.groups ?? []}>
+                    {({ group, repos }) => (
                         <>
                             <h2>{group}</h2>
                             <Repositories repos={repos} />
