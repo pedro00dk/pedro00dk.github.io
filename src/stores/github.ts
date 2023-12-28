@@ -39,7 +39,7 @@ export type Repo = {
 
 export type Store = {
     repos?: Repo[]
-    groups?: { [group: string]: Repo[] }
+    groups?: ReturnType<typeof getGroups>
 }
 
 export const [github$, setGithub$] = createStore<Store>({})
@@ -52,9 +52,25 @@ const fetchRepos = cache(async () => {
             : await (await fetch('https://api.github.com/users/pedro00dk/repos?per_page=100')).json()
     localStorage.setItem('github-repos-expire', `${Date.now() + 86400000}`)
     localStorage.setItem('github-repos', JSON.stringify(repos))
-    const groups: Store['groups'] = {}
-    repos.forEach(repo => repo.topics.forEach(topic => topic.startsWith('gio-') && (groups[topic] ??= []).push(repo)))
-    setGithub$({ repos, groups })
+    setGithub$({ repos, groups: getGroups(repos) })
 }, 'repos')
+
+const getGroups = (repos: Repo[]) => {
+    const orderPrefix = 'gio-order-'
+    const groupPrefix = 'gio-group-'
+    const ghpName = `${repos[0].owner.login}.github.io`
+    const ghpRepo = repos.find(({ name }) => name === ghpName)!
+    const order = ghpRepo.topics
+        .filter(t => t.startsWith(orderPrefix))
+        .map(t => t.slice(orderPrefix.length))
+        .map(o => ({ group: o.slice(o.indexOf('-') + 1), order: +o.slice(0, o.indexOf('-')) }))
+        .sort(({ order: a }, { order: b }) => a - b)
+        .map(({ group }) => group)
+    const groups = [...new Set(repos.flatMap(({ topics }) => topics))]
+        .filter(t => t.startsWith(groupPrefix))
+        .map(t => ({ group: t.slice(groupPrefix.length), repos: repos.filter(({ topics }) => topics.includes(t)) }))
+        .sort(({ group: a }, { group: b }) => order.indexOf(a) - order.indexOf(b))
+    return groups
+}
 
 export const githubActions = { fetchRepos }
